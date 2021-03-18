@@ -4,19 +4,17 @@ services:
     image: node:14.15.4-alpine
     container_name: mai_app
     environment:
-      MYSQL_SERVER: db
       TZ: 'Asia/Tokyo'
     volumes:
       - ./:/usr/src
     working_dir:
       /usr/src/app
-    command: sh -c "npm run dev"
+    command: sh -c 'npm run dev'
     tty: true
     ports:
-      - "3000:3000"
+      - '3000:3000'
     links:
       - db
-      - db:database
   db:
     image: mysql:5.7
     container_name: mai_db
@@ -25,5 +23,6 @@ services:
       TZ: 'Asia/Tokyo'
     tty: true
     ports:
-      - "3306:3306"
-  
+      - '3306:3306'
+volumes:
+  mysql:

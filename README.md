@@ -12,28 +12,16 @@ docker-compose up -d
 
 Access http://localhost:3000
 
-- Connect app container
-
-```
-docker exec -it mai_app /bin/sh
-```
-
-- Create next
-
-```
-npx create-next-app app next-mysql
-```
-
-- Connect db
-
-```
-docker exec -it mai_db /bin/sh
-mysql -u user -p
-```
-
 ### Connect
 
 ```
 docker exec -it mai_app /bin/sh
 docker exec -it mai_db /bin/sh
+```
+
+### MySQL connect
+
+From host
+```
+mysql -P 3306 -u root -p --protocol=tcp
 ```
