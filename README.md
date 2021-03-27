@@ -1,3 +1,8 @@
+### Env
+
+./env
+db/mysql.env
+
 ### Introduction
 
 https://vercel.com/guides/deploying-next-and-mysql-with-vercel
