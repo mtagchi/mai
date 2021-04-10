@@ -1,27 +1,15 @@
-### Env
-
-./env
-db/mysql.env
-
 ### Introduction
 
-https://vercel.com/guides/deploying-next-and-mysql-with-vercel
+https://github.com/vercel/next.js/tree/canary/examples/with-firebase
 
-- Set env
+- Set env @`./env`
 
 - Create container
 
 ```
 docker-compose build
-docker-compose run app npm install next react react-dom serverless-mysql
+docker-compose run app npm install next react react-dom
 docker-compose up -d
-```
-
-- Migrate
-
-@app container
-```
-npm run migrate
 ```
 
 Access http://localhost:3000
@@ -30,12 +18,4 @@ Access http://localhost:3000
 
 ```
 docker exec -it mai_app /bin/sh
-docker exec -it mai_db /bin/sh
-```
-
-### MySQL connect
-
-- From host
-```
-mysql -P 3306 -u root -p --protocol=tcp
 ```
