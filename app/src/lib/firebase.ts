@@ -25,7 +25,7 @@ export default {
       .signInWithPopup(provider)
       .then(async (result) => {
         if (result.user) {
-          const time = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+          const time = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
           const currentUser: User = {
             uid: result.user.uid,
             displayName: result.user.displayName,
