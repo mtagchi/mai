@@ -1,14 +1,12 @@
 ### Introduction
 
-https://github.com/vercel/next.js/tree/canary/examples/with-firebase
-
 - Set env @`./env`
 
 - Create container
 
 ```
 docker-compose build
-docker-compose run app npm install next react react-dom
+docker-compose run app npm install next react react-dom firebase
 docker-compose up -d
 ```
 
