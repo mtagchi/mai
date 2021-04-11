@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import 'firebase/auth'
+import { User } from '../../interfaces'
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -22,8 +23,26 @@ export default {
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then((result: any) => {
-        return result
+      .then(async (result) => {
+        if (result.user) {
+          const time = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+          const currentUser: User = {
+            uid: result.user.uid,
+            displayName: result.user.displayName,
+            email: result.user.email,
+            photoURL: result.user.photoURL,
+            updateAt: time
+          }
+          const db = firebase.firestore()
+          const userRef = db.collection('users').doc(currentUser.uid)
+          const userDoc = await userRef.get()
+          if (userDoc.exists) {
+            userRef.update(currentUser)
+          } else {
+            currentUser.createdAt = time
+            userRef.set(currentUser)
+          }
+        }
       })
       .catch((error) => {
         console.log(error)

@@ -5,6 +5,10 @@
 // import { User } from 'path/to/interfaces';
 
 export type User = {
-  id: number
-  name: string
+  uid: string,
+  displayName: string | null,
+  email: string | null,
+  photoURL: string | null,
+  createdAt?: string
+  updateAt: string
 }
